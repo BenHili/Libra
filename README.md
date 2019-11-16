@@ -1,2 +1,2 @@
-# -Libra-
+# Libra
 Second hand book marketplace
