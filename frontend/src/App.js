@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 
 import book from "./images/road_to_learn_react.jpg";
-import splash from "./images/bookshelf.jpg";
 
 const description = `Swipe at owner's legs purr like an angel. Crash against wall but walk
         away like nothing happened so you're just gonna scroll by without saying
@@ -24,14 +23,6 @@ function Search(props) {
         onChange={props.change}
         placeholder={props.search}
       />
-    </div>
-  );
-}
-
-function Splash(props) {
-  return (
-    <div className="Splash-container">
-      <img className="Splash-image" src={props.image} />
     </div>
   );
 }
@@ -69,7 +60,7 @@ class App extends React.Component {
 
   render() {
     const searchProps = {
-      name: "📖 Libra",
+      name: "Libra",
       search: this.state.search,
       submit: this.searchSubmit,
       change: this.searchChange
@@ -84,9 +75,12 @@ class App extends React.Component {
       );
     } else {
       return (
-        <div>
-          <Splash image={splash} />
-          <Search {...searchProps} />
+        <div className="App">
+          <div className="App-fullscreen-background">
+            <div className="App-fullscreen-search">
+              <Search {...searchProps} search="Enter your search terms" />
+            </div>
+          </div>
         </div>
       );
     }

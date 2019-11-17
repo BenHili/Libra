@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  height: 100vh;
 }
 
 .App-header {
@@ -49,10 +50,26 @@
   display: flex;
   position: absolute;
   align-items: center;
-  background: white;
-  width: 100%;
+  width: 80%;
+  transform: translateX(8%);
   justify-content: center;
   font-size: calc(5px + 2vmin);
+}
+
+.App-fullscreen-background {
+  background-image: url("./images/bookshelf.jpg");
+  height: 70%;
+  background-size: cover;
+}
+
+.App-fullscreen-search {
+  padding-top: 30vh;
+}
+
+.App-fullscreen-search .Search-container {
+  padding: 8px 10px;
+  background: white;
+  border-radius: 25px;
 }
 
 .App-search:hover {
