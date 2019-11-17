@@ -1,0 +1,29 @@
+.Search-container {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  width: 80%;
+  transform: translateX(8%);
+  justify-content: center;
+  font-size: calc(5px + 2vmin);
+}
+
+.Search-input {
+  border: none;
+  font-size: calc(5px + 2vmin);
+  padding: 10px;
+  margin: 10px;
+  height: 20px;
+  width: 500px;
+  border: 1px solid #eaeaea;
+  outline: none;
+  flex-grow: 1;
+  margin-left: 20px;
+}
+.Search-input:hover {
+  border-color: #a0a0a0 #b9b9b9 #b9b9b9 #b9b9b9;
+}
+
+.Search-input:focus {
+  border-color: #4d90fe;
+}

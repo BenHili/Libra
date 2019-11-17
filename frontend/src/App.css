@@ -3,10 +3,6 @@
   height: 100vh;
 }
 
-.App-link {
-  color: #09d3ac;
-}
-
 .Header {
   min-height: 10vh;
   padding: 20px;
@@ -16,42 +12,7 @@
   font-size: calc(5px + 2vmin);
 }
 
-.App-link {
-  color: #09d3ac;
-}
-
-.Splash-container {
-  max-width: 100%;
-  height: auto;
-}
-
-.Splash-image {
-  max-width: 100%;
-  height: auto;
-}
-
-.App-search {
-  border: none;
-  font-size: calc(5px + 2vmin);
-  padding: 10px;
-  margin: 10px;
-  height: 20px;
-  width: 500px;
-  border: 1px solid #eaeaea;
-  outline: none;
-  flex-grow: 1;
-  margin-left: 20px;
-}
-
-.Search-container {
-  display: flex;
-  position: absolute;
-  align-items: center;
-  width: 80%;
-  transform: translateX(8%);
-  justify-content: center;
-  font-size: calc(5px + 2vmin);
-}
+/* Fullscreen view */
 
 .App-fullscreen-background {
   background-image: url("./images/bookshelf.jpg");
@@ -67,61 +28,4 @@
   padding: 8px 10px;
   background: white;
   border-radius: 25px;
-}
-
-.App-search:hover {
-  border-color: #a0a0a0 #b9b9b9 #b9b9b9 #b9b9b9;
-}
-.Header-search:focus {
-  border-color: #4d90fe;
-}
-
-.Book-card {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  background: gray;
-  position: relative;
-  padding: 4%;
-  margin: 2%;
-}
-.Book-card img {
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  bottom: 18%;
-}
-
-.Book-card {
-  background: #f3f8fb;
-  min-width: 200px;
-  max-width: 375px;
-  border-radius: 8px;
-  padding-bottom: 2%;
-  margin: 2%;
-}
-
-.Image-box img {
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 4px;
-  object-fit: contain;
-}
-
-.Image-box {
-  max-height: 100%;
-  width: 92%;
-  padding: 4%;
-  object-fit: contain;
-}
-
-.Test-box p,
-h2 {
-  margin: 0;
-}
-
-.Test-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
