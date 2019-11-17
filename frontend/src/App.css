@@ -15,7 +15,30 @@
   color: #09d3ac;
 }
 
+.App-result {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
 .App-search {
+  border: none;
+  font-size: calc(5px + 2vmin);
+  padding: 10px;
+  margin: 10px;
+  height: 20px;
+  width: 500px;
+  border: 1px solid #eaeaea;
+  outline: none;
   flex-grow: 1;
   margin-left: 20px;
+}
+
+.App-search:hover {
+  border-color: #a0a0a0 #b9b9b9 #b9b9b9 #b9b9b9;
+}
+.App-search:focus {
+  border-color: #4d90fe;
 }
