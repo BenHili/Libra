@@ -16,6 +16,14 @@
   color: #09d3ac;
 }
 
+.App-result {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
 .App-search {
   border: none;
   font-size: calc(5px + 2vmin);
