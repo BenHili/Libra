@@ -1,15 +1,34 @@
 import React from "react";
 import Book from "./components/Book";
 import Search from "./components/Search";
+import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
 import "./App.css";
-
-import book from "./images/road_to_learn_react.jpg";
-
-const title = `My title`;
-const description = `Swipe at owner's legs purr like an angel. `;
 
 function Header(props) {
   return <header className="App-header">{props.search}</header>;
+}
+
+function Results(props) {
+  return (
+    <div className="App">
+      <Header search={<Search {...props.searchProps} />} />
+      <div className="App-books">
+        <Book />
+        <Book />
+      </div>
+    </div>
+  );
+}
+function Home(props) {
+  return (
+    <div className="App">
+      <div className="App-fullscreen-background">
+        <div className="App-fullscreen-search">
+          <Search {...props.searchProps} search="Enter your search terms" />
+        </div>
+      </div>
+    </div>
+  );
 }
 
 class App extends React.Component {
@@ -26,40 +45,33 @@ class App extends React.Component {
 
   searchSubmit(key) {
     if (key.charCode == 13) {
+      this.props.history.push(`/search?query=${this.state.searchValue}`);
       this.setState({ search: this.state.searchValue });
     }
   }
 
   render() {
     const searchProps = {
-      name: "Libra",
       search: this.state.search,
       submit: this.searchSubmit,
       change: this.searchChange
     };
 
-    if (this.state.search) {
-      return (
-        <div className="App">
-          <Header search={<Search {...searchProps} />} />
-          <div className="App-books">
-            <Book title={title} image={book} description={description} />
-            <Book title={title} image={book} description={description} />
-          </div>
-        </div>
-      );
-    } else {
-      return (
-        <div className="App">
-          <div className="App-fullscreen-background">
-            <div className="App-fullscreen-search">
-              <Search {...searchProps} search="Enter your search terms" />
-            </div>
-          </div>
-        </div>
-      );
-    }
+    return (
+      <Router>
+        <Route
+          path="/search"
+          component={Results}
+          render={() => <Results searchProps={searchProps} />}
+        />
+        <Route
+          exact
+          path="/"
+          render={() => <Home searchProps={searchProps} />}
+        />
+      </Router>
+    );
   }
 }
 
-export default App;
+export default withRouter(App);
