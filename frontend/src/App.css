@@ -22,6 +22,16 @@
   justify-content: center;
 }
 
+.Splash-container {
+  max-width: 100%;
+  height: auto;
+}
+
+.Splash-image {
+  max-width: 100%;
+  height: auto;
+}
+
 .App-search {
   border: none;
   font-size: calc(5px + 2vmin);
@@ -33,6 +43,16 @@
   outline: none;
   flex-grow: 1;
   margin-left: 20px;
+}
+
+.Search-container {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  background: white;
+  width: 100%;
+  justify-content: center;
+  font-size: calc(5px + 2vmin);
 }
 
 .App-search:hover {

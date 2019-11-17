@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 
 import book from "./images/road_to_learn_react.jpg";
+import splash from "./images/bookshelf.jpg";
 
 const description = `Swipe at owner's legs purr like an angel. Crash against wall but walk
         away like nothing happened so you're just gonna scroll by without saying
@@ -12,13 +13,31 @@ const description = `Swipe at owner's legs purr like an angel. Crash against wal
         such a manner that tail can lightly brush human's nose yet kitty
         scratches couch bad kitty for 𝕄𝔼𝕆𝕎 sit in a box for hours.`;
 
-function Header(props) {
+function Search(props) {
   return (
-    <header className="App-header">
+    <div className="Search-container">
       <h1>{props.name}</h1>
-      <input className="App-search" type="text" />
-    </header>
+      <input
+        className="App-search"
+        type="text"
+        onKeyPress={props.submit}
+        onChange={props.change}
+        placeholder={props.search}
+      />
+    </div>
   );
+}
+
+function Splash(props) {
+  return (
+    <div className="Splash-container">
+      <img className="Splash-image" src={props.image} />
+    </div>
+  );
+}
+
+function Header(props) {
+  return <header className="App-header">{props.search}</header>;
 }
 
 function Result(props) {
@@ -30,13 +49,48 @@ function Result(props) {
   );
 }
 
-function App() {
-  return (
-    <div className="App">
-      <Header name="📖 Libra" />
-      <Result image={book} description={description} />
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { search: "" };
+    this.searchChange = this.searchChange.bind(this);
+    this.searchSubmit = this.searchSubmit.bind(this);
+  }
+
+  searchChange(event) {
+    this.setState({ searchValue: event.target.value });
+  }
+
+  searchSubmit(key) {
+    if (key.charCode == 13) {
+      this.setState({ search: this.state.searchValue });
+    }
+  }
+
+  render() {
+    const searchProps = {
+      name: "📖 Libra",
+      search: this.state.search,
+      submit: this.searchSubmit,
+      change: this.searchChange
+    };
+
+    if (this.state.search) {
+      return (
+        <div className="App">
+          <Header search={<Search {...searchProps} />} />
+          <Result image={book} description={description} />
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <Splash image={splash} />
+          <Search {...searchProps} />
+        </div>
+      );
+    }
+  }
 }
 
 export default App;
