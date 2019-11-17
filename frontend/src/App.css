@@ -17,5 +17,19 @@
 }
 
 .App-search {
-  width: 100%;
+  border: none;
+  font-size: calc(5px + 2vmin);
+  padding: 10px;
+  margin: 10px;
+  height: 20px;
+  width: 500px;
+  border: 1px solid #eaeaea;
+  outline: none;
+}
+
+.App-search:hover {
+  border-color: #a0a0a0 #b9b9b9 #b9b9b9 #b9b9b9;
+}
+.App-search:focus {
+  border-color: #4d90fe;
 }
