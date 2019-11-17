@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  height: 100vh;
 }
 
 .App-link {
@@ -15,7 +16,28 @@
   font-size: calc(5px + 2vmin);
 }
 
-.Header-search {
+.App-link {
+  color: #09d3ac;
+}
+
+.App-result {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.Splash-container {
+  max-width: 100%;
+  height: auto;
+}
+
+.Splash-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.App-search {
   border: none;
   font-size: calc(5px + 2vmin);
   padding: 10px;
@@ -28,7 +50,33 @@
   margin-left: 20px;
 }
 
-.Header-search:hover {
+.Search-container {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  width: 80%;
+  transform: translateX(8%);
+  justify-content: center;
+  font-size: calc(5px + 2vmin);
+}
+
+.App-fullscreen-background {
+  background-image: url("./images/bookshelf.jpg");
+  height: 70%;
+  background-size: cover;
+}
+
+.App-fullscreen-search {
+  padding-top: 30vh;
+}
+
+.App-fullscreen-search .Search-container {
+  padding: 8px 10px;
+  background: white;
+  border-radius: 25px;
+}
+
+.App-search:hover {
   border-color: #a0a0a0 #b9b9b9 #b9b9b9 #b9b9b9;
 }
 .Header-search:focus {
