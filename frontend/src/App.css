@@ -4,11 +4,10 @@
 
 .App-header {
   min-height: 10vh;
-  width: 100%;
   padding: 20px;
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
   font-size: calc(5px + 2vmin);
 }
 
@@ -17,5 +16,6 @@
 }
 
 .App-search {
-  width: 100%;
+  flex-grow: 1;
+  margin-left: 20px;
 }
