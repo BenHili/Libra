@@ -8,9 +8,12 @@ const description = `Swipe at owner's legs purr like an angel. `;
 function Book() {
   return (
     <div className="Book-card">
-      <div className="Image-box">
-        <img src={book} />
-      </div>
+      <span>
+        <div className="Image-box">
+          <img src={book} />
+          <a className="View-btn">View</a>
+        </div>
+      </span>
       <div className="Text-box">
         <h2>{title}</h2>
         <p>{description}</p>
