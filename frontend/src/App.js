@@ -14,7 +14,6 @@ function App() {
   return (
     <div className="App">
       <Header name="📖 Libra" />
-      <h1>blah</h1>
     </div>
   );
 }
