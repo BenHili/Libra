@@ -2,8 +2,8 @@
   display: flex;
   position: absolute;
   align-items: center;
-  width: 80%;
-  transform: translateX(8%);
+  width: 60%;
+  transform: translateX(25%);
   justify-content: center;
   font-size: calc(5px + 2vmin);
 }

@@ -12,6 +12,10 @@
   font-size: calc(5px + 2vmin);
 }
 
+.App-books {
+  padding-top: 100px;
+  display: flex;
+}
 /* Fullscreen view */
 
 .App-fullscreen-background {

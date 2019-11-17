@@ -42,7 +42,10 @@ class App extends React.Component {
       return (
         <div className="App">
           <Header search={<Search {...searchProps} />} />
-          <Book title={title} image={book} description={description} />
+          <div className="App-books">
+            <Book title={title} image={book} description={description} />
+            <Book title={title} image={book} description={description} />
+          </div>
         </div>
       );
     } else {

@@ -1,7 +1,7 @@
 .Book-card {
   background: #f3f8fb;
-  min-width: 200px;
-  max-width: 375px;
+  min-width: 100px;
+  max-width: 150px;
   border-radius: 8px;
   padding-bottom: 2%;
   margin: 2%;
