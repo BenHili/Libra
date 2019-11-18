@@ -3,7 +3,7 @@
   height: 100vh;
 }
 
-.Header {
+.App-Header {
   min-height: 10vh;
   padding: 20px;
   display: flex;
