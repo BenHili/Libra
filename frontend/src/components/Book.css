@@ -1,7 +1,7 @@
 .Book-card {
-  background: #f3f8fb;
   min-width: 100px;
   max-width: 150px;
+  background: #ffffff;
   border-radius: 8px;
   padding-bottom: 2%;
   margin: 2%;
@@ -10,7 +10,6 @@
 .Image-box img {
   max-width: 100%;
   max-height: 100%;
-
   border-radius: 4px;
   object-fit: contain;
   position: relative;
@@ -18,7 +17,7 @@
 
 .Image-box {
   max-height: 100%;
-  border-radius: 8px 8px 0 0 ;
+  border-radius: 8px 8px 0 0;
   width: 90%;
   padding: 5%;
   object-fit: contain;
@@ -26,7 +25,7 @@
   position: relative;
 }
 
-.View-btn{
+.View-btn {
   position: absolute;
   display: inline-block;
   top: 25%;
@@ -36,7 +35,6 @@
   padding: 4% 12%;
   border-radius: 24px;
   transform: scale(0);
-
 }
 
 .Text-box p,
@@ -56,14 +54,13 @@ h2 {
   transition-timing-function: ease-in-out;
 }
 
-.Image-box:hover img{
+.Image-box:hover img {
   opacity: 0;
   transition-duration: 0.4s;
   transition-timing-function: ease-in-out;
-
 }
 
-.Image-box:hover a{
+.Image-box:hover a {
   transform: scale(1);
   transition: transform 300ms 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }

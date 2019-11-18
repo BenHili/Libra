@@ -11,6 +11,14 @@ function Results(props) {
       <div className="App-books">
         <Book />
         <Book />
+        <Book />
+        <Book />
+        <Book />
+        <Book />
+        <Book />
+        <Book />
+        <Book />
+        <Book />
       </div>
     </div>
   );

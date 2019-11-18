@@ -13,8 +13,10 @@
 }
 
 .App-books {
-  padding-top: 100px;
   display: flex;
+  padding-left: 25%;
+  flex-wrap: wrap;
+  background: #f3f8fb;
 }
 /* Fullscreen view */
 
