@@ -6,13 +6,14 @@ function Book(props) {
     <div className="Book-card">
       <span>
         <div className="Image-box">
-          <img src={props.img} />
-          <a className="View-btn">View</a>
+          <img src={props.img} alt="Book Cover" />
+          <button className="View-btn">View</button>
         </div>
       </span>
       <div className="Text-box">
         <h2>{props.title}</h2>
         <p>{props.description}</p>
+        <h2>{props.price}</h2>
       </div>
     </div>
   );
