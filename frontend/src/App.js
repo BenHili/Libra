@@ -1,5 +1,6 @@
 import React from "react";
 import Book from "./components/Book";
+import NavBar from "./components/NavBar";
 import Search from "./components/Search";
 import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
 import "./App.css";
@@ -7,6 +8,7 @@ import "./App.css";
 function Results(props) {
   return (
     <div className="App">
+      <NavBar />
       <Search {...props.searchProps} search={props.match.params.query} />
       <div className="App-books">
         <Book />
@@ -34,6 +36,7 @@ function Home(props) {
     </div>
   );
 }
+
 
 function App() {
   return (
