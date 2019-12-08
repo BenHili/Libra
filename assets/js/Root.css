@@ -21,7 +21,7 @@
 /* Fullscreen view */
 
 .Home-fullscreen-background {
-  background-image: url("../static/images/bookshelf.jpg");
+  background-image: url("/images/bookshelf.jpg");
   height: 70%;
   background-size: cover;
 }

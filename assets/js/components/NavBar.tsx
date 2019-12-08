@@ -4,13 +4,15 @@ import "./NavBar.css";
 function NavBar() {
   return (
     <div className="navbar">
-      <a className="navbar-brand" href="#">
-        <img src="#" />
-      </a>
+      <a className="navbar-brand" href="#"></a>
       <div className="navbar-info">
         <div className="navbar-item-list">
-          <a className="nav-item" href="#">Home</a>
-          <a className="nav-item" href="#">About</a>
+          <a className="nav-item" href="#">
+            Home
+          </a>
+          <a className="nav-item" href="#">
+            About
+          </a>
         </div>
       </div>
     </div>
