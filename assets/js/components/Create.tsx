@@ -3,7 +3,7 @@ import axios from "axios";
 import Book from "./Book";
 import { withRouter, Link, RouteComponentProps } from "react-router-dom";
 
-import "../App.css";
+import "../Root.css";
 
 interface ComponentState {
   response: any[];

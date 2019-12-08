@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 
-import "../App.css";
+import "../Root.css";
 
 interface ComponentState {
-  description: string
+  description: string;
 }
 
 class CreateNew extends Component<RouteComponentProps, ComponentState> {
