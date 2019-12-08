@@ -1,7 +1,14 @@
 import React from "react";
 import "./Book.css";
 
-function Book(props) {
+interface BookProps {
+  title: string;
+  description: string;
+  img: string;
+  price: string;
+}
+
+function Book(props: BookProps) {
   return (
     <div className="Book-card">
       <span>

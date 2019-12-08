@@ -1,8 +1,8 @@
 import React from "react";
 import "./NavBar.css";
 
-function NavBar(props) {
-  return(
+function NavBar() {
+  return (
     <div className="navbar">
       <a className="navbar-brand" href="#">
         <img src="#" />

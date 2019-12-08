@@ -1,21 +1,17 @@
-
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
-import "./index.css";
-import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import Root from "./Root";
+import "./app.css";
 
-import css from "../css/app.css"
-
-
-import "phoenix_html"
+import "phoenix_html";
 
 ReactDOM.render(
   <Router>
-    <App />
+    <Root />
   </Router>,
-  document.getElementById("root")
+  document.getElementById("react-app")
 );
 
 // If you want your app to work offline and load faster, you can change

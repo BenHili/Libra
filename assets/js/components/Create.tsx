@@ -1,17 +1,22 @@
-import React from "react";
+import React, { Component, FormEvent } from "react";
 import axios from "axios";
 import Book from "./Book";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter, Link, RouteComponentProps } from "react-router-dom";
 
 import "../App.css";
 
-class Create extends React.Component {
-  constructor(props) {
+interface ComponentState {
+  response: any[];
+  img: string;
+}
+
+class Create extends Component<RouteComponentProps, ComponentState> {
+  constructor(props: RouteComponentProps) {
     super(props);
     this.searchSubmit = this.searchSubmit.bind(this);
   }
 
-  async getGoogleResults(query) {
+  async getGoogleResults(query: string) {
     const response = await axios.get(
       `https://www.googleapis.com/books/v1/volumes?q=intitle:${query}`
     );
@@ -24,10 +29,14 @@ class Create extends React.Component {
     }
   }
 
-  async searchSubmit(event) {
+  async searchSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const queryInput = document.getElementById("queryInput");
-    await this.getGoogleResults(queryInput.value);
+    const queryInputNode = document.getElementById(
+      "queryInput"
+    ) as HTMLInputElement;
+    if (queryInputNode && queryInputNode.value) {
+      await this.getGoogleResults(queryInputNode.value);
+    }
   }
 
   render() {
@@ -35,20 +44,21 @@ class Create extends React.Component {
 
     if (this.state && this.state.response) {
       results.push(
-        this.state.response.map((item, index)=> {
+        this.state.response.map((item, index) => {
           return (
             <div key={index}>
               <Book
                 {...{
                   img: item.volumeInfo.imageLinks.smallThumbnail,
                   description: item.volumeInfo.description,
-                  title: item.volumeInfo.title
+                  title: item.volumeInfo.title,
+                  price: "$59.99"
                 }}
               />
               <Link
                 to={{
                   pathname: "/create/new",
-                  state: { volumeInfo: item.volumeInfo}
+                  state: { volumeInfo: item.volumeInfo }
                 }}
               >
                 {" "}
@@ -61,7 +71,7 @@ class Create extends React.Component {
     }
 
     return (
-      <div className="App">
+      <div className="Root">
         <form
           style={{
             textAlign: "left",
@@ -76,7 +86,7 @@ class Create extends React.Component {
           <input id="queryInput" type="text" />
           <button type="submit">Search</button>
         </form>
-        <div className="App-books">{results}</div>
+        <div className="Root-books">{results}</div>
       </div>
     );
   }
