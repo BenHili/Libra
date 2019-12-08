@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 import Root from "./Root";
+import "@babel/polyfill";
 import "./app.css";
 
 import "phoenix_html";

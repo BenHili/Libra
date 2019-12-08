@@ -34,9 +34,8 @@ class Create extends Component<RouteComponentProps, ComponentState> {
     const queryInputNode = document.getElementById(
       "queryInput"
     ) as HTMLInputElement;
-    if (queryInputNode && queryInputNode.value) {
-      await this.getGoogleResults(queryInputNode.value);
-    }
+    console.log(queryInputNode);
+    await this.getGoogleResults(queryInputNode.value);
   }
 
   render() {
