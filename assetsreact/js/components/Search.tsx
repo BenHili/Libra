@@ -35,10 +35,10 @@ class Search extends Component<RouteComponentProps, SearchState> {
 
   render() {
     return (
-      <div className="Search-container">
+      <div className="search-container">
         <h1>{appName}</h1>
         <input
-          className="Search-input"
+          className="search-input"
           type="text"
           onChange={this.searchChange}
           onKeyPress={this.searchSubmit}

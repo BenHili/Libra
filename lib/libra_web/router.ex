@@ -16,7 +16,9 @@ defmodule LibraWeb.Router do
   scope "/", LibraWeb do
     pipe_through :browser
 
-    get "/*path", PageController, :index
+    get "/", PageController, :index
+    get "/home", PageController, :index
+    get "/search", PageController, :index
   end
 
   # Other scopes may use custom stacks.

@@ -1,0 +1,7 @@
+<div class="search-container">
+    <h1>Libra</h1>
+    <input
+        class="search-input"
+        type="text"
+    />
+</div>
