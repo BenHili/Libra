@@ -18,7 +18,7 @@ defmodule LibraWeb.Router do
 
     get "/", PageController, :index
     get "/home", PageController, :index
-    get "/search", PageController, :index
+    get "/search", PageController, :search
   end
 
   # Other scopes may use custom stacks.

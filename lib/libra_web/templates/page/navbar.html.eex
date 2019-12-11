@@ -1,0 +1,13 @@
+<div class="navbar">
+    <a class="navbar-brand" href="/"></a>
+    <div class="navbar-info">
+    <div class="navbar-item-list">
+        <a class="nav-item" href="/">
+        Home
+        </a>
+        <a class="nav-item" href="#">
+        About
+        </a>
+    </div>
+    </div>
+</div>

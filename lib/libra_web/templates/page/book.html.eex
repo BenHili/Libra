@@ -1,0 +1,13 @@
+<div class="Book-card">
+    <span>
+        <div class="Image-box">
+            <img src="/images/road_to_learn_react.jpg" alt="Book Cover" />
+            <button class="View-btn">View</button>
+        </div>
+    </span>
+    <div class="Text-box">
+        <h2>Road To Learn React</h2>
+        <p>Blah blah</p>
+        <h2>$99.99</h2>
+    </div>
+</div>
