@@ -1,6 +1,5 @@
 <div class="Root">
     <%= render("navbar.html") %>
-    <%= render("search.html") %>
     <div className="results-books">
         <%= render("book.html") %>
     </div>
