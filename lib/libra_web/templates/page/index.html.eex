@@ -1,19 +1,25 @@
 <div class="Root">
-    <div class="Home-fullscreen-background">
-        <div class="Home-fullscreen-search">
-            <%= render("search.html") %>
-        </div>
-    </div>
-    <div class="Home-options">
-        <div>
-            <h2>
-            <a href="?mode=buy">Buy</a>
-            </h2>
-        </div>
-        <div>
-            <h2>
-            <a href="?mode=sell">Sell</a>
-            </h2>
-        </div>
-    </div>
+    <div class=Home-fullscreen-true-background>
+				<div class="Home-fullscreen-background">
+        		<div class="Home-fullscreen-search">
+            				<%= render("search.html") %>
+						
+        		</div>
+				</div>
+    
+    <div>
+				<div class="Home-options">
+        		<div>
+            		<h2>
+            				<a href="?mode=buy">Buy</a>
+            		</h2>
+        		</div>
+        		<div>
+            		<bigfont>
+            				<a href="?mode=sell">Sell</a>
+            		</bigfont>
+        		</div>
+				</div>
+		</div>
+		</div>
 </div>
