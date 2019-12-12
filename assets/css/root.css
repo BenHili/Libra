@@ -8,7 +8,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Monaco, Menlo, Consolas, "Courier New",
     monospace;
 }
 
@@ -35,11 +35,16 @@ code {
 /* Fullscreen view */
 
 .Home-fullscreen-background {
+
   background-image: url("/images/bookshelf.jpg");
-  height: 70%;
+  height: 80%;
   background-size: cover;
 }
-
+.Home-fullscreen-true-background{
+  background-color: lightblue;
+  display: cover;
+  height: 100%;
+}
 .Home-fullscreen-search {
   padding-top: 30vh;
 }
@@ -53,5 +58,17 @@ code {
 .Home-fullscreen-search .search-container {
   padding: 8px 10px;
   background: white;
-  border-radius: 25px;
+  border-radius: 15px;
+}
+
+/* fonts */
+
+bigfont {
+  display: block;
+  font-size: 3em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: italic;
 }

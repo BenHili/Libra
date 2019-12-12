@@ -1,7 +1,7 @@
 .Book-card {
   min-width: 200px;
   max-width: 250px;
-  background: #ffffff;
+  background: white;
   border-radius: 8px;
   padding-bottom: 2%;
   margin: 2%;
@@ -39,7 +39,7 @@
 }
 
 .Book-card:hover .Image-box {
-  background: #16a085;
+  background: green;
   transition-duration: 0.4s;
   transition-timing-function: ease-in-out;
 }
