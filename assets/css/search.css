@@ -20,7 +20,7 @@
   margin-left: 20px;
 }
 .search-input:hover {
-  border-color: #a0a0a0 #b9b9b9 #b9b9b9 #b9b9b9;
+  border-color: black #b9b9b9 #b9b9b9 #b9b9b9;
 }
 
 .search-input:focus {
