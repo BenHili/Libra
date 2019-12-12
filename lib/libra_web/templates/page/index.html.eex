@@ -6,11 +6,13 @@
     </div>
     <div class="Home-options">
         <div>
-            <h2>Browse</h2>
+            <h2>
+            <a href="?mode=buy">Buy</a>
+            </h2>
         </div>
         <div>
             <h2>
-            <a href="/create">Sell</a>
+            <a href="?mode=sell">Sell</a>
             </h2>
         </div>
     </div>

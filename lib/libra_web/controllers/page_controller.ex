@@ -5,7 +5,11 @@ defmodule LibraWeb.PageController do
     render(conn, "index.html")
   end
 
-  def search(conn, _params) do
+  def buy(conn, _params) do
+    render(conn, "results.html")
+  end
+
+  def sell(conn, _params) do
     render(conn, "results.html")
   end
 end

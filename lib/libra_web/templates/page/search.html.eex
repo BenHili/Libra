@@ -10,11 +10,14 @@
 
 <script>
  document.getElementById('search-input').onkeypress = function(e){
-    if (!e) e = window.event;
-    const keyCode = e.keyCode || e.which;
-    if (keyCode == '13'){
-      const query = document.getElementById('search-input').value
-      window.location.href = `/search?query=${query}`
-    }
-  }
+   if (!e) e = window.event;
+   const keyCode = e.keyCode || e.which;
+   if (keyCode == '13'){
+     const urlParams = new URLSearchParams(window.location.search)
+     const query = document.getElementById('search-input').value
+     if (urlParams.has('mode')) {
+       window.location.href = `/${urlParams.get('mode')}/?query=${query}`
+     }
+   }
+ }
 </script>
