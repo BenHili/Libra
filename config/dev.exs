@@ -23,7 +23,7 @@ config :libra, LibraWeb.Endpoint,
   check_origin: false,
   watchers: [
     node: [
-      "../node_modules/webpack/bin/webpack.js",
+      "../assets/node_modules/webpack/bin/webpack.js",
       "--mode",
       "development",
       "--watch-stdin",
