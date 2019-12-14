@@ -3,9 +3,11 @@ defmodule Libra.Book do
   import Ecto.Changeset
 
   schema "books" do
+    field :authors, {:array, :string}
     field :description, :string
+    field :google_id, :string
     field :image, :string
-    field :price, :decimal
+    field :page_count, :integer
     field :title, :string
 
     timestamps()
@@ -14,7 +16,7 @@ defmodule Libra.Book do
   @doc false
   def changeset(book, attrs) do
     book
-    |> cast(attrs, [:title, :price, :description, :image])
-    |> validate_required([:title, :price, :description, :image])
+    |> cast(attrs, [:title, :authors, :description, :image, :google_id, :page_count])
+    |> validate_required([:title, :authors, :description, :image, :google_id, :page_count])
   end
 end

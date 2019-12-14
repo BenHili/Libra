@@ -2,7 +2,7 @@
     <span>
         <div class="Image-box">
             <img src=<%= @book[:image] %> alt="Book Cover" />
-            <a href="#">Buy now!</a>
+            <a href="/create?book=<%= @book[:id] %>">Buy now!</a>
             <button class="View-btn">View</button>
         </div>
     </span>

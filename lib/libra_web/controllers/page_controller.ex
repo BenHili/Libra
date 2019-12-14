@@ -48,6 +48,7 @@ defmodule LibraWeb.PageController do
             bookInfo =
               Enum.map(req["items"], fn item ->
                 %{
+                  :id => get_in(item, ["id"]),
                   :title => get_in(item, ["volumeInfo", "title"]),
                   :image => get_in(item, ["volumeInfo", "imageLinks", "smallThumbnail"]),
                   :description => get_in(item, ["volumeInfo", "description"]),
@@ -64,9 +65,30 @@ defmodule LibraWeb.PageController do
 
       {:error, %HTTPoison.Error{reason: reason}} ->
         Logger.error(reason)
-        #
-        # TODO: send the user to an error page
-        render(conn, "results.html")
+        render(conn, "error_view.html")
+    end
+  end
+
+  def create(conn, %{"book" => book}) do
+    url = "https://www.googleapis.com/books/v1/volumes/#{book}"
+
+    case HTTPoison.get(url) do
+      {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
+        item = Poison.decode!(body)
+
+        bookInfo = %{
+          :id => get_in(item, ["id"])
+        }
+
+        render(conn, "create.html", book: book)
+
+      {:ok, %HTTPoison.Response{status_code: 404}} ->
+        Logger.info("Not found :(")
+        render(conn, "index.html")
+
+      {:error, %HTTPoison.Error{reason: reason}} ->
+        Logger.error(reason)
+        render(conn, "error_view.html")
     end
   end
 end
