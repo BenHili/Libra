@@ -3,7 +3,6 @@
   max-width: 200px;
   background: #ffffff;
   border-radius: 8px;
-  padding-bottom: 2%;
   margin: 2%;
 }
 
@@ -60,7 +59,7 @@
 }
 
 .Text-box {
-  height: 24vh;
+  height: 16vh;
   top: 40%;
   left: 50%;
   padding: 5%;
