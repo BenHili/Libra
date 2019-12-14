@@ -38,13 +38,12 @@
 }
 
 .Book-card:hover .Image-box {
-  background: #16a085;
   transition-duration: 0.4s;
   transition-timing-function: ease-in-out;
 }
 
 .Book-card:hover .Image-box img {
-  opacity: 0;
+  opacity: 0.4;
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
 }
