@@ -1,7 +1,11 @@
-<%= form_for @changeset, Routes.page_path(@conn, :create), fn f -> %>
+<%= form_for @changeset, Routes.sell_path(@conn, :create), fn f -> %>
 
     <label>
-        Page Count: <%= text_input f, :page_count %>
+        Description: <%= text_input f, :description%>
+    </label>
+
+    <label>
+        Cost: <%= text_input f, :cost %>
     </label>
 
     <%= hidden_input f, :google_id %>

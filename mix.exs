@@ -19,8 +19,8 @@ defmodule Libra.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Libra.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools],
+      mod: {Libra.Application, []}
     ]
   end
 
@@ -44,7 +44,8 @@ defmodule Libra.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:poison, "~> 3.1"},
-      {:httpoison, "~> 1.6"}
+      {:httpoison, "~> 1.6"},
+      {:pow, "~> 1.0.15"}
     ]
   end
 

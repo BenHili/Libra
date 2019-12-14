@@ -42,5 +42,7 @@ defmodule LibraWeb.Endpoint do
     key: "_libra_key",
     signing_salt: "F8UvrDvp"
 
+  plug Pow.Plug.Session, otp_app: :libra
+
   plug LibraWeb.Router
 end
