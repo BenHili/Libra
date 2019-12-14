@@ -1,0 +1,10 @@
+<%= form_for @changeset, Routes.page_path(@conn, :create), fn f -> %>
+
+    <label>
+        Page Count: <%= text_input f, :page_count %>
+    </label>
+
+    <%= hidden_input f, :google_id %>
+
+    <%= submit "Submit" %>
+<% end %>

@@ -1,0 +1,14 @@
+<div class="Book-card">
+    <span>
+        <div class="Image-box">
+            <img src=<%= @book[:image] %> alt="Book Cover" />
+            <a href="/new?id=<%= @book[:id] %>">Buy now!</a>
+            <button class="View-btn">View</button>
+        </div>
+    </span>
+    <div class="Text-box">
+        <h2><%= @book[:title] %></h2>
+        <p><%= @book[:description] %></p>
+        <h4><%= @book[:price] %></h4>
+    </div>
+</div>

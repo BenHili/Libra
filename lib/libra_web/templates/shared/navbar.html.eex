@@ -1,5 +1,5 @@
 <div class="navbar">
-    <%= render("search.html") %>
+    <%= render(LibraWeb.SharedView, "search.html") %>
     <a class="navbar-brand" href="/"></a>
     <div class="navbar-info">
     <div class="navbar-item-list">

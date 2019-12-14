@@ -1,7 +1,7 @@
 <div class="Root">
     <div class="Home-fullscreen-background">
         <div class="Home-fullscreen-search">
-            <%= render("search.html") %>
+            <%= render(LibraWeb.SharedView, "search.html") %>
         </div>
     </div>
     <div class="Home-options">

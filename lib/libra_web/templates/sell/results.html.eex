@@ -1,0 +1,14 @@
+<div class="Root">
+    <%= render(LibraWeb.SharedView, "navbar.html") %>
+    <div class="results-books">
+        <%= if assigns[:books] do %>
+            <%= for book <- @books do %>
+                <%= render("book.html", book: book) %>
+            <% end %>
+        <% else %>
+            <div>
+                <p>No Results!</p>
+            </div>
+        <% end %>
+    </div>
+</div>
