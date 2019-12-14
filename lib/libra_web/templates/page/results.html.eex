@@ -1,6 +1,6 @@
 <div class="Root">
     <%= render("navbar.html") %>
-    <div className="results-books">
+    <div class="results-books">
         <%= if assigns[:books] do %>
             <%= for book <- @books do %>
                 <%= render("book.html", book: book) %>
