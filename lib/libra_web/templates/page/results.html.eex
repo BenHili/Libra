@@ -1,8 +1,14 @@
 <div class="Root">
     <%= render("navbar.html") %>
     <div className="results-books">
-    <%= for book <- @books do %>
-        <%= render("book.html", book: book) %>
-    <% end %>
+        <%= if assigns[:books] do %>
+            <%= for book <- @books do %>
+                <%= render("book.html", book: book) %>
+            <% end %>
+        <% else %>
+            <div>
+                <p>No Results!</p>
+            </div>
+        <% end %>
     </div>
 </div>

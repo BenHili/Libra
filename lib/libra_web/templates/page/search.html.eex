@@ -1,23 +1,10 @@
-<div class="search-container">
+<div class="search-container" data-controller="search">
     <h1>Libra</h1>
     <input
+      data-action="search#input"
       class="search-input"
       type="text"
       id="search-input"
     />
 </div>
 
-
-<script>
- document.getElementById('search-input').onkeypress = function(e){
-   if (!e) e = window.event;
-   const keyCode = e.keyCode || e.which;
-   if (keyCode == '13'){
-     const urlParams = new URLSearchParams(window.location.search)
-     const query = document.getElementById('search-input').value
-     if (urlParams.has('mode')) {
-       window.location.href = `/${urlParams.get('mode')}/?query=${query}`
-     }
-   }
- }
-</script>

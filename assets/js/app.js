@@ -11,10 +11,13 @@ import css from "../css/app.css";
 //
 import "phoenix_html";
 
-// Import local files
-//
-// Local files can be imported directly using relative paths, for example:
-// import socket from "./socket"
-import Turbolinks from "turbolinks";
+// Setup Stimulus and controllers
+import { Application } from "stimulus";
+const application = Application.start();
 
+import SearchController from "./search_controller";
+application.register("search", SearchController);
+
+// Initialise turbolinks
+import Turbolinks from "turbolinks";
 Turbolinks.start();
