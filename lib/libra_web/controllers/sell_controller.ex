@@ -26,8 +26,8 @@ defmodule LibraWeb.SellController do
                 %{
                   :id => get_in(item, ["id"]),
                   :title => get_in(item, ["volumeInfo", "title"]),
-                  :image => get_in(item, ["volumeInfo", "imageLinks", "smallThumbnail"]),
-                  :description => get_in(item, ["volumeInfo", "description"]),
+                  :image => get_in(item, ["volumeInfo", "imageLinks", "thumbnail"]),
+                  :authors => get_in(item, ["volumeInfo", "authors"]),
                   :price => "99.99"
                 }
               end)
@@ -62,29 +62,37 @@ defmodule LibraWeb.SellController do
             :id => get_in(req, ["id"]),
             :title => get_in(req, ["volumeInfo", "title"]),
             :authors => get_in(req, ["volumeInfo", "authors"]),
-            :image => get_in(req, ["volumeInfo", "imageLinks", "smallThumbnail"]),
+            :image => get_in(req, ["volumeInfo", "imageLinks", "thumbnail"]),
             :page_count => get_in(req, ["volumeInfo", "pageCount"]),
             :description => get_in(req, ["volumeInfo", "description"]),
             :google_id => book["google_id"]
           })
 
-        case Repo.insert_or_update(book_changeset) do
-          {:ok, %Libra.Book{id: id, description: description}} ->
-            listing_changeset =
-              Listing.changeset(
-                %Listing{},
-                %{
-                  :user_id => Pow.Plug.current_user(conn),
-                  :book_id => id,
-                  :description => description,
-                  :price => book["price"]
-                }
-              )
+        book_record =
+          Repo.insert!(
+            book_changeset,
+            on_conflict: :replace_all_except_primary_key,
+            conflict_target: :google_id
+          )
 
-            Repo.insert(listing_changeset)
+        current_user = Pow.Plug.current_user(conn)
 
-            render(conn, "results.html")
-        end
+        listing_changeset =
+          Listing.changeset(
+            %Listing{},
+            %{
+              :user => current_user,
+              :book => book_record,
+              :description => book["description"],
+              :price => book["price"]
+            }
+          )
+
+        Logger.info(inspect(listing_changeset))
+
+        Repo.insert(listing_changeset)
+
+        render(conn, "results.html")
 
       {:ok, %HTTPoison.Response{status_code: 404}} ->
         Logger.info("Not found :(")

@@ -5,7 +5,7 @@
     </label>
 
     <label>
-        Cost: <%= text_input f, :cost %>
+        Price: <%= text_input f, :price %>
     </label>
 
     <%= hidden_input f, :google_id %>

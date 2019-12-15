@@ -1,12 +1,14 @@
 defmodule Libra.Listing do
   use Ecto.Schema
+  alias Libra.Users.User
+  alias Libra.Book
   import Ecto.Changeset
 
   schema "listings" do
     field :description, :string
     field :price, :decimal
-    field :user_id, :id
-    field :book_id, :id
+    belongs_to :user, User
+    belongs_to :book, Book
 
     timestamps()
   end
@@ -16,5 +18,7 @@ defmodule Libra.Listing do
     listing
     |> cast(attrs, [:description, :price])
     |> validate_required([:description, :price])
+    |> put_assoc(:user, attrs.user)
+    |> put_assoc(:book, attrs.book)
   end
 end
