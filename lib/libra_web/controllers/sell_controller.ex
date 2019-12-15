@@ -3,6 +3,10 @@ defmodule LibraWeb.SellController do
   require HTTPoison
 
   alias Libra.Book
+  alias Libra.Listing
+  alias Libra.Repo
+  alias Pow.Plug
+
   use LibraWeb, :controller
 
   def sell(conn, %{"query" => query}) do
@@ -22,8 +26,8 @@ defmodule LibraWeb.SellController do
                 %{
                   :id => get_in(item, ["id"]),
                   :title => get_in(item, ["volumeInfo", "title"]),
-                  :image => get_in(item, ["volumeInfo", "imageLinks", "smallThumbnail"]),
-                  :description => get_in(item, ["volumeInfo", "description"]),
+                  :image => get_in(item, ["volumeInfo", "imageLinks", "thumbnail"]),
+                  :authors => get_in(item, ["volumeInfo", "authors"]),
                   :price => "99.99"
                 }
               end)
@@ -46,8 +50,57 @@ defmodule LibraWeb.SellController do
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, _params) do
-    changeset = Book.changeset(%Book{})
-    Logger.info(_params)
+  def create(conn, %{"book" => book}) do
+    url = "https://www.googleapis.com/books/v1/volumes/#{book["google_id"]}"
+
+    case HTTPoison.get(url) do
+      {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
+        req = Poison.decode!(body)
+
+        book_changeset =
+          Book.changeset(%Book{}, %{
+            :id => get_in(req, ["id"]),
+            :title => get_in(req, ["volumeInfo", "title"]),
+            :authors => get_in(req, ["volumeInfo", "authors"]),
+            :image => get_in(req, ["volumeInfo", "imageLinks", "thumbnail"]),
+            :page_count => get_in(req, ["volumeInfo", "pageCount"]),
+            :description => get_in(req, ["volumeInfo", "description"]),
+            :google_id => book["google_id"]
+          })
+
+        book_record =
+          Repo.insert!(
+            book_changeset,
+            on_conflict: :replace_all_except_primary_key,
+            conflict_target: :google_id
+          )
+
+        current_user = Pow.Plug.current_user(conn)
+
+        listing_changeset =
+          Listing.changeset(
+            %Listing{},
+            %{
+              :user => current_user,
+              :book => book_record,
+              :description => book["description"],
+              :price => book["price"]
+            }
+          )
+
+        Logger.info(inspect(listing_changeset))
+
+        Repo.insert(listing_changeset)
+
+        render(conn, "results.html")
+
+      {:ok, %HTTPoison.Response{status_code: 404}} ->
+        Logger.info("Not found :(")
+        render(conn, "results.html")
+
+      {:error, %HTTPoison.Error{reason: reason}} ->
+        Logger.error(reason)
+        render(conn, "error_view.html")
+    end
   end
 end

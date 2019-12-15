@@ -10,19 +10,19 @@ defmodule LibraWeb.BuyController do
       %{
         :title => "Road to learn react",
         :image => "/images/road_to_learn_react.jpg",
-        :description => "#{query}",
+        :authors => "#{query}",
         :price => "$99.99"
       },
       %{
         :title => "Programming Phoenix 14",
         :image => "/images/programming_phoenix.jpg",
-        :description => "Blah blah",
+        :authors => "Blah blah",
         :price => "Priceless"
       },
       %{
         :title => "Elixir In Action",
         :image => "/images/elixir_in_action.jpg",
-        :description => "My boi",
+        :authors => "My boi",
         :price => "Priceless"
       }
     ]
