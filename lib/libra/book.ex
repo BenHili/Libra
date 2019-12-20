@@ -1,5 +1,6 @@
 defmodule Libra.Book do
   use Ecto.Schema
+  alias Libra.Repo
   import Ecto.Changeset
   import Ecto.Query
 
@@ -32,5 +33,13 @@ defmodule Libra.Book do
             ^query_string
           ) <= ^threshold
     )
+  end
+
+  def upsert(params) do
+      Repo.insert!(
+        params,
+        on_conflict: :replace_all_except_primary_key,
+        conflict_target: :google_id
+      )
   end
 end
