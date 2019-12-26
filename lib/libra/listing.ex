@@ -1,7 +1,7 @@
 defmodule Libra.Listing do
   use Ecto.Schema
-  alias Libra.Users.User
-  alias Libra.Book
+  alias Libra.{Repo, Book, Users.User}
+
   import Ecto.Changeset
 
   schema "listings" do
@@ -14,11 +14,10 @@ defmodule Libra.Listing do
   end
 
   @doc false
-  def changeset(listing, attrs) do
+  def changeset(listing, params \\ %{}) do
     listing
-    |> cast(attrs, [:description, :price])
-    |> validate_required([:description, :price])
-    |> put_assoc(:user, attrs.user)
-    |> put_assoc(:book, attrs.book)
+    |> cast(params, [:description, :price, :user_id, :book_id])
+    |> validate_required([:description, :price, :user_id, :book_id])
   end
+
 end
