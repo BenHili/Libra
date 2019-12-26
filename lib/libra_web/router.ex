@@ -33,10 +33,8 @@ defmodule LibraWeb.Router do
 
     get "/buy", BuyController, :buy
 
-    get "/sell", SellController, :sell
-
     pipe_through :protected
-    get "/new", SellController, :new
+    get "/sell", SellController, :sell
     post "/create", SellController, :create
   end
 end

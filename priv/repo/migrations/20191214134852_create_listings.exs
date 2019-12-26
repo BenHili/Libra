@@ -3,8 +3,8 @@ defmodule Libra.Repo.Migrations.CreateListings do
 
   def change do
     create table(:listings) do
-      add :description, :string
       add :price, :decimal
+      add :description, :string
       add :user_id, references(:users, on_delete: :nothing)
       add :book_id, references(:books, on_delete: :nothing)
 

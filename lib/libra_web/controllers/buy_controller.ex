@@ -1,31 +1,18 @@
 defmodule LibraWeb.BuyController do
   use LibraWeb, :controller
+  import Ecto.Query
+  alias Libra.{Repo, Listing, Book}
+  require Logger
 
   def index(conn, _params) do
     render(conn, "index.html")
   end
 
   def buy(conn, %{"query" => query}) do
-    books = [
-      %{
-        :title => "Road to learn react",
-        :image => "/images/road_to_learn_react.jpg",
-        :authors => "#{query}",
-        :price => "$99.99"
-      },
-      %{
-        :title => "Programming Phoenix 14",
-        :image => "/images/programming_phoenix.jpg",
-        :authors => "Blah blah",
-        :price => "Priceless"
-      },
-      %{
-        :title => "Elixir In Action",
-        :image => "/images/elixir_in_action.jpg",
-        :authors => "My boi",
-        :price => "Priceless"
-      }
-    ]
+    listing_query = from l in Listing, join: b in Book, on: l.book_id == b.id, select: map(b, [:title, :image, :authors])
+
+    books = Repo.all(listing_query)
+
 
     render(conn, "results.html", books: books)
   end

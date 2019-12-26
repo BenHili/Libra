@@ -1,106 +1,39 @@
 defmodule LibraWeb.SellController do
-  require Logger
-  require HTTPoison
-
-  alias Libra.Book
-  alias Libra.Listing
-  alias Libra.Repo
-  alias Pow.Plug
-
   use LibraWeb, :controller
+  alias Libra.{Listing, Repo, Book, OpenLibrary}
+  require Logger
 
   def sell(conn, %{"query" => query}) do
-    url = "https://www.googleapis.com/books/v1/volumes?q=intitle:#{URI.encode(query)}"
+    book_rec = Repo.get_by(Book, isbn_13: query)
 
-    case HTTPoison.get(url) do
-      {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
-        req = Poison.decode!(body)
+    if !book_rec do
+      ol_record = OpenLibrary.getByIsbn(query)
 
-        cond do
-          req["totalItems"] == 0 ->
-            render(conn, "results.html")
+      new_book =
+        Book.changeset(%Book{}, ol_record)
+        |> Book.upsert()
+        |> Map.from_struct()
 
-          true ->
-            bookInfo =
-              Enum.map(req["items"], fn item ->
-                %{
-                  :id => get_in(item, ["id"]),
-                  :title => get_in(item, ["volumeInfo", "title"]),
-                  :image => get_in(item, ["volumeInfo", "imageLinks", "thumbnail"]),
-                  :authors => get_in(item, ["volumeInfo", "authors"]),
-                  :price => "99.99"
-                }
-              end)
-
-            render(conn, "results.html", books: bookInfo)
-        end
-
-      {:ok, %HTTPoison.Response{status_code: 404}} ->
-        Logger.info("Not found :(")
-        render(conn, "results.html")
-
-      {:error, %HTTPoison.Error{reason: reason}} ->
-        Logger.error(reason)
-        render(conn, "error_view.html")
+      render(conn, "new.html",
+        book: new_book,
+        book_id: new_book.id,
+        listing_changeset: Listing.changeset(%Listing{})
+      )
     end
+
+    render(conn, "new.html",
+      book: Map.from_struct(book_rec),
+      book_id: book_rec.id,
+      listing_changeset: Listing.changeset(%Listing{})
+    )
   end
 
-  def new(conn, %{"id" => google_id}) do
-    changeset = Book.changeset(%Book{}, %{google_id: google_id})
-    render(conn, "new.html", changeset: changeset)
-  end
+  def create(conn, %{"listing" => listing}) do
+    current_user = Pow.Plug.current_user(conn)
 
-  def create(conn, %{"book" => book}) do
-    url = "https://www.googleapis.com/books/v1/volumes/#{book["google_id"]}"
+    Listing.changeset(%Listing{}, Map.put(listing, "user_id", current_user.id))
+    |> Repo.insert!()
 
-    case HTTPoison.get(url) do
-      {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
-        req = Poison.decode!(body)
-
-        book_changeset =
-          Book.changeset(%Book{}, %{
-            :id => get_in(req, ["id"]),
-            :title => get_in(req, ["volumeInfo", "title"]),
-            :authors => get_in(req, ["volumeInfo", "authors"]),
-            :image => get_in(req, ["volumeInfo", "imageLinks", "thumbnail"]),
-            :page_count => get_in(req, ["volumeInfo", "pageCount"]),
-            :description => get_in(req, ["volumeInfo", "description"]),
-            :google_id => book["google_id"]
-          })
-
-        book_record =
-          Repo.insert!(
-            book_changeset,
-            on_conflict: :replace_all_except_primary_key,
-            conflict_target: :google_id
-          )
-
-        current_user = Pow.Plug.current_user(conn)
-
-        listing_changeset =
-          Listing.changeset(
-            %Listing{},
-            %{
-              :user => current_user,
-              :book => book_record,
-              :description => book["description"],
-              :price => book["price"]
-            }
-          )
-
-        Logger.info(inspect(listing_changeset))
-
-        Repo.insert(listing_changeset)
-
-        render(conn, "results.html")
-
-      {:ok, %HTTPoison.Response{status_code: 404}} ->
-        Logger.info("Not found :(")
-        render(conn, "results.html")
-
-      {:error, %HTTPoison.Error{reason: reason}} ->
-        Logger.error(reason)
-        render(conn, "error_view.html")
-    end
+    render(conn, "results.html")
   end
 end
