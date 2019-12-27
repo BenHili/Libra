@@ -1,7 +1,7 @@
 defmodule Libra.Book do
   use Ecto.Schema
-  import Ecto.Changeset
   alias Libra.Repo
+  import Ecto.Changeset
 
   schema "books" do
     field :title, :string

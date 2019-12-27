@@ -2,3 +2,7 @@
 @import "./search.css";
 @import "./book.css";
 @import "./navbar.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
