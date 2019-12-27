@@ -1,4 +1,4 @@
-<div class="Root">
+<div class="root">
     <%= render(LibraWeb.SharedView, "navbar.html") %>
     <div class="results-books">
         <%= if assigns[:books] do %>

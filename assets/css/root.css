@@ -12,12 +12,12 @@ code {
     monospace;
 }
 
-.Root {
+.root {
   text-align: center;
   height: 100vh;
 }
 
-.Root-Header {
+.root-header {
   min-height: 10vh;
   padding: 20px;
   display: flex;
@@ -34,23 +34,23 @@ code {
 }
 /* Fullscreen view */
 
-.Home-fullscreen-background {
+.home-fullscreen-background {
   background-image: url("/images/bookshelf.jpg");
   height: 70%;
   background-size: cover;
 }
 
-.Home-fullscreen-search {
+.home-fullscreen-search {
   padding-top: 30vh;
 }
 
-.Home-options {
+.home-options {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 
-.Home-fullscreen-search .search-container {
+.home-fullscreen-search .search-container {
   padding: 8px 10px;
   background: white;
   border-radius: 25px;

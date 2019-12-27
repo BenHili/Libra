@@ -1,10 +1,10 @@
-<div class="Root">
-    <div class="Home-fullscreen-background">
-        <div class="Home-fullscreen-search">
+<div class="root">
+    <div class="home-fullscreen-background">
+        <div class="home-fullscreen-search">
             <%= render(LibraWeb.SharedView, "search.html") %>
         </div>
     </div>
-    <div class="Home-options">
+    <div class="home-options">
         <div>
             <h2>
             <a href="?mode=buy">Buy</a>
